@@ -1,12 +1,14 @@
 # GrillMyCode — Prompt Configuration
 
-This repository holds the **live prompts** used by [GrillMyCode](https://github.com/nscc-itc-assessment/grillmycode) to generate code-comprehension questions. It exists so the assessment prompts can be edited and tuned **without rebuilding or re-releasing the action**.
+This **public** repository holds the **live prompts** used by [GrillMyCode](https://github.com/NSCC-ITC-Assessment/GrillMyCode) to generate code-comprehension questions. It exists so the assessment prompts can be edited and tuned **without rebuilding or re-releasing the action**.
 
 ## How it works
 
 At runtime, GrillMyCode fetches each prompt fragment from the [`prompts/`](prompts/) directory of this repository's **default branch** and assembles them into the messages sent to the AI model. Editing any of these files and committing to the default branch takes effect on the **next action run** — no rebuild, no release, no version bump.
 
-Each fragment falls back **independently**: if a single file is unreachable or missing, the action uses the copy bundled inside its Docker image for *that file only* and still uses your live versions of the rest. If this whole repository is unavailable, every fragment falls back to its bundled copy. Either way, assessments keep working; the action log records exactly which fragments fell back.
+Because this repository is **public**, the action reads it with the calling workflow's default `GITHUB_TOKEN` — there is no token, secret, or action input to configure. Each fragment falls back **independently**: if a single file is unreachable or missing, the action uses the copy bundled inside its image for *that file only* and still uses your live versions of the rest. If this whole repository is unavailable, every fragment falls back to its bundled copy. Either way, assessments keep working; the action log records exactly which fragments fell back.
+
+> **This repository is public — treat everything in it as world-readable.** It holds only the generic question-generation rubric. Never put anything sensitive here. Note that answers are generated per submission (not stored here), and the per-run `instructor_context` and `assignment_context` are action inputs / read from the student repo — they are **not** in this repository.
 
 ## Repository structure
 
@@ -24,7 +26,7 @@ Only the files under `prompts/` are read. Everything else (including this README
 
 - File paths must be exactly as shown, under `prompts/` at the repository root.
 - The **default branch** (`main`) is what gets read.
-- This repo must live under the **same owner/org** as the action, named `<action-repo>-config` (e.g. `grillmycode` → `grillmycode-config`). GrillMyCode derives this automatically; do not rename it.
+- This repo must be **public** and live under the **same owner/org** as the action, named `<action-repo>-config` (e.g. `GrillMyCode` → `GrillMyCode-config`). GrillMyCode derives this name automatically; do not rename it.
 
 ## How the fragments fit together
 
