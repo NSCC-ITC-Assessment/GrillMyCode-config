@@ -93,7 +93,7 @@ ANSWER CONSTRAINTS:
 
 SHORT-ANSWER QUESTIONS (exactly one in every three):
 
-- Exactly one in every three questions must target a correct answer of {{SHORT_ANSWER_MAX_CHARS}} characters or fewer — for example, a specific return value (`42`, `null`, `True`), a single keyword, or a short identifier. Output-trace questions work well here. No more than one-third of questions should be short-answer.
+- Exactly one in every three questions must target a correct answer of 20 characters or fewer — for example, a specific return value (`42`, `null`, `True`), a single keyword, or a short identifier. Output-trace questions work well here. No more than one-third of questions should be short-answer.
 - For short-answer questions, ALL options (correct + distractors) must be short. Do not mix a short correct answer with long distractors or vice versa. In particular, a short-answer distractor must be just the bare value (e.g. `'1'`, `'0'`, `'a'`) — do NOT append a "because…"/"since…" justification clause to it. If the correct answer is a bare value, every distractor must be a bare value too (see the JUSTIFICATION SYMMETRY RULE above).
 - WATCH FOR THIS: numeric and percentage answers (e.g. `50%`, `42`, `-1`, `0.5`) are the most common place this rule is broken, because a wrong value seems to "need" a reason. It does not. Either keep ALL four options bare, or — if a justification genuinely adds value — give the CORRECT answer a matching justification too so every option is justified. Never leave the correct value bare while the distractors carry reasons.
 - CONCRETE VIOLATION EXAMPLE — short-answer asymmetry (study before writing any value-style question):
@@ -120,8 +120,16 @@ Every option must read like a confident answer a student might give — include 
 2. Write THREE distractors that are verifiably wrong but sound plausible. All options (correct + distractors) must share the same justification style — if distractors have "because…" clauses, the correct answer must have one too.
 3. Every option must be at least 8 words.
 
+**CRITICAL: BEFORE MOVING TO STEP 2, CHECK LENGTH BALANCE:**
+- Compare C visually to D1, D2, D3 — they should look similar in length
+- If C is noticeably longer, rewrite C to be more concise OR add detail to distractors
+- If C is noticeably shorter, add detail to C OR remove detail from distractors
+- DO NOT proceed to Step 2 until all four options look balanced
+
 **STEP 2 — CHARACTER CAP (correct answer only):**
-The correct answer must be {{LONG_ANSWER_MAX_CHARS}} characters or fewer. Count characters (including spaces and punctuation) — this is a hard ceiling. If it exceeds {{LONG_ANSWER_MAX_CHARS}}, trim it. Distractors are exempt from this cap and may exceed it freely.
+The correct answer must be 120 characters or fewer. Count characters (including spaces and punctuation) — this is a hard ceiling. If it exceeds 120, trim it. Distractors are exempt from this cap and may exceed it freely.
+
+**WARNING: A short correct answer with long distractors is PREFERABLE to a long correct answer with short distractors. If C exceeds 80 characters, reconsider whether you can phrase it more concisely.**
 
 **STEP 3 — VISUAL BALANCE VERIFICATION (MANDATORY — check every question):**
 After writing all four options, verify:
@@ -207,7 +215,7 @@ After verifying lengths, calculate: longest option ÷ shortest option ≤ 2.5. I
 > ✓ All options describe 2 things happening ("does X and does Y")
 
 **SHORT-ANSWER QUESTIONS (value-only, no reasoning clauses):**
-When the correct answer is a bare value (e.g., `null`, `42`, `true`), ALL four options must be bare values with no "because…" or "since…" clauses. The justification symmetry rule is satisfied by keeping all four options equally terse. Correct answer ≤{{SHORT_ANSWER_MAX_CHARS}} characters.
+When the correct answer is a bare value (e.g., `null`, `42`, `true`), ALL four options must be bare values with no "because…" or "since…" clauses. The justification symmetry rule is satisfied by keeping all four options equally terse. Correct answer ≤20 characters.
 
 MANDATORY BULLET STRUCTURE — this is a rejection-level rule, not a formatting preference:
 Every question MUST follow this exact anatomy:
@@ -262,7 +270,7 @@ ANTI-OVER-GENERATION RULE — CRITICAL:
 Do NOT generate more than {{numQuestions}} questions. After writing question {{numQuestions}} in full, STOP IMMEDIATELY. Do not write question {{numQuestionsPlus1}}. Producing extra questions beyond {{numQuestions}} is equally as invalid as producing too few. Once the --- separator after question {{numQuestions}}'s answer block is written, your response is complete — emit no further content.
 
 SHORT-ANSWER TRACKER:
-Track your count of short-answer questions as you write. A short-answer question is one whose correct answer is {{SHORT_ANSWER_MAX_CHARS}} characters or fewer (e.g. `42`, `null`, `True`, a single keyword, or a short identifier). You MUST have exactly floor({{numQuestions}} / 3) short-answer questions — no more, no fewer. After writing each question, pause and verify: if your short-answer count is less than floor(N/3) at question N, the next question should be short-answer; if it is already met, the next question must NOT be short-answer. Stop and revise any question that breaks this ratio.
+Track your count of short-answer questions as you write. A short-answer question is one whose correct answer is 20 characters or fewer (e.g. `42`, `null`, `True`, a single keyword, or a short identifier). You MUST have exactly floor({{numQuestions}} / 3) short-answer questions — no more, no fewer. After writing each question, pause and verify: if your short-answer count is less than floor(N/3) at question N, the next question should be short-answer; if it is already met, the next question must NOT be short-answer. Stop and revise any question that breaks this ratio.
 
 🛑 MANDATORY PRE-OUTPUT VALIDATION — ABSOLUTE FINAL CHECK (FAILURE = OUTPUT REJECTION):
 YOU ARE FORBIDDEN FROM EMITTING OUTPUT UNTIL ALL QUESTIONS PASS EVERY CHECK BELOW. This is not a suggestion — it is a hard gate. If you emit output with ANY violation below, your entire response is INVALID and will be REJECTED.
