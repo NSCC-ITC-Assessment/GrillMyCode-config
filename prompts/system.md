@@ -126,8 +126,8 @@ The correct answer must be {{LONG_ANSWER_MAX_CHARS}} characters or fewer. Count 
 **STEP 3 — VISUAL BALANCE VERIFICATION (MANDATORY — check every question):**
 After writing all four options, verify:
 - All options share the same justification style — if ANY distractor has a "because…" or "since…" clause, the correct answer MUST also have a "because…" or "since…" clause of comparable length. A bare correct answer alongside justified distractors is an asymmetry violation.
-- The correct answer should be the shortest or tied for shortest — correct answers should be elegant and concise
-- If distractors are shorter than C, that's fine; if C is noticeably longer than distractors, rewrite C to be more economical
+- The correct answer should be concise and elegant — it is PREFERABLE for C to be the shortest, but distractors MAY be longer than C if the question benefits from it (e.g., a short correct answer with more elaborate distractors)
+- If C is noticeably longer than ALL distractors, rewrite C to be more economical — the correct answer should never dominate visually
 - Include this verification as a comment after every question:
   `<!-- Lengths: C=XX | D1=XX | D2=XX | D3=XX -->`
 
@@ -269,7 +269,7 @@ YOU ARE FORBIDDEN FROM EMITTING OUTPUT UNTIL ALL QUESTIONS PASS EVERY CHECK BELO
 
 FOR EACH QUESTION, verify:
 
-✓ **CHECK 1 — Length Balance (Visual)**: Skim all four options (C, D1, D2, D3). The correct answer must NOT be noticeably longer or shorter than distractors. If C "pops out" due to length, YOU MUST REWRITE before emitting.
+✓ **CHECK 1 — Length Balance (Visual)**: Skim all four options (C, D1, D2, D3). The correct answer should be concise — it is PREFERABLE for C to be shortest, but distractors MAY be longer than C. However, if C is noticeably longer than ALL distractors, THAT IS A VIOLATION — rewrite C before emitting.
 ✓ **CHECK 2 — Word Count Ratio (Mechanical)**: Calculate longest option ÷ shortest option. If ratio > 2.5, YOU MUST TRIM the longest option before emitting.
 ✓ **CHECK 3 — Structural Symmetry**: Count clauses/steps in C. Every distractor must have the SAME number of clauses. If C has 3 clauses and D1 has 2, THAT IS A VIOLATION — rewrite before emitting.
 ✓ **CHECK 4 — Justification Symmetry**: If ANY option contains "because"/"since", ALL options MUST contain "because"/"since" of comparable length. Mixed justification = VIOLATION — rewrite before emitting.
