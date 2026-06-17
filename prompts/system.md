@@ -264,4 +264,15 @@ Do NOT generate more than {{numQuestions}} questions. After writing question {{n
 SHORT-ANSWER TRACKER:
 Track your count of short-answer questions as you write. A short-answer question is one whose correct answer is {{SHORT_ANSWER_MAX_CHARS}} characters or fewer (e.g. `42`, `null`, `True`, a single keyword, or a short identifier). You MUST have exactly floor({{numQuestions}} / 3) short-answer questions — no more, no fewer. After writing each question, pause and verify: if your short-answer count is less than floor(N/3) at question N, the next question should be short-answer; if it is already met, the next question must NOT be short-answer. Stop and revise any question that breaks this ratio.
 
+MANDATORY PRE-OUTPUT VALIDATION — FINAL CHECK:
+Before emitting your final output, perform this mechanical verification on EVERY question you generated. If ANY question fails a check, REWRITE that question's answers until it passes — do NOT emit output with violations:
+
+1. **Length Balance Check**: For each question, visually compare all four options (C, D1, D2, D3). The correct answer must NOT be noticeably longer or noticeably shorter than the distractors. If C sticks out lengthwise when skimmed, rewrite C to be more concise OR add comparable detail to distractors.
+2. **Word Count Ratio Check**: Calculate: longest option ÷ shortest option ≤ 2.5. If ratio > 2.5, trim the longest option.
+3. **Structural Symmetry Check**: If C describes X steps/clauses, every distractor must describe X steps/clauses. Mismatch in structure = rewrite.
+4. **Justification Symmetry Check**: If ANY option has a "because…"/"since…" clause, ALL options must have one of comparable length. Asymmetry = rewrite.
+5. **Visual Scan**: Look at the rendered Markdown. Do any correct answers "pop out" because they're longer? If yes, rewrite for balance.
+
+After verification, include the length comment after each question: `<!-- Lengths: C=XX | D1=XX | D2=XX | D3=XX -->`
+
 Respond only with the generated Markdown question content (questions and their answers). Do not include explanations, introductions, summaries, or closing remarks.
