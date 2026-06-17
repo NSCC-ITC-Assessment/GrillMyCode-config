@@ -135,8 +135,22 @@ After writing all four options, verify:
 - If the correct answer describes a multi-step process (e.g., "reads X, splits by Y, stores in Z"), every distractor must also describe a multi-step process with the same number of clauses.
 - If the correct answer contains a "because…" or "since…" clause, every distractor must also contain a "because…" or "since…" clause of comparable length and specificity.
 - If the correct answer mentions multiple conditions (e.g., "X OR Y"), distractors must also mention multiple conditions to match structurally — otherwise C will be ~2x longer and visually obvious.
+- If the correct answer includes extra detail (e.g., "X, such as Y"), distractors should also include comparable extra detail to keep lengths similar — otherwise C dominates visually.
 
-**EXAMPLE — multi-condition mismatch:**
+**EXAMPLE — extra detail mismatch:**
+> Question: "Why does getValidCoordinates use try-catch?"
+> REJECTED (C has extra parenthetical detail, distractors don't):
+> - C: "To handle unexpected errors during string validation, such as accessing properties on undefined values" (115 chars)
+> - D1: "To catch file system errors from reading the map file" (55 chars)
+> - D2: "To catch errors from the random number generator" (50 chars)
+> - D3: "To catch errors thrown by the chalk library" (48 chars)
+> → C is 2x longer — visually obvious. Fix by adding similar detail to distractors or removing it from C.
+
+> VALID (all options have similar structure and length):
+> - C: "To handle unexpected errors during string validation, such as accessing properties on undefined values"
+> - D1: "To catch file system errors when reading the map file, such as missing permissions or corrupt data"
+> - D2: "To catch errors from the random number generator, such as seed generation failures"
+> - D3: "To catch errors from the chalk library, such as invalid color code arguments"**
 > Question: "When does the game loop terminate?"
 > REJECTED (C has 2 conditions, distractors have 1):
 > - C: "Loop exits when hitsToWin equals 0 OR missilesRemaining is less than hitsToWin" (130 chars)
