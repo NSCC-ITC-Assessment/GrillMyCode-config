@@ -53,13 +53,13 @@ function checkForRepeatedStrike(launchCoordinates, targetsMap) {
    <!-- gmc:answer -->
 
    **Answer:**
-   - `checkForTargetStrike` checks `locationsMap` for `'1'` to detect ships and returns true when found, while `checkForRepeatedStrike` checks `targetsMap` for any defined value to detect repeated strikes
+   - `checkForTargetStrike` checks `locationsMap` for `'1'` to detect ships, while `checkForRepeatedStrike` checks `targetsMap` for any defined value to detect repeated strikes
 
    **Distractors for Multiple-Choice Quiz:**
    - `checkForTargetStrike` reads `locationsMap` for `'0'` to confirm an empty cell, while `checkForRepeatedStrike` reads `targetsMap` for `undefined` to confirm no prior launch
    - `checkForTargetStrike` compares `targetsMap` against `'hit'` to identify destroyed ships, while `checkForRepeatedStrike` compares `locationsMap` against `null` to detect processed coordinates
    - `checkForTargetStrike` evaluates `locationsMap[`targetRow`][`targetColumn`] !== '1'` to return true on a miss, while `checkForRepeatedStrike` evaluates `targetsMap[`targetRow`][`targetColumn`] !== undefined` to return true when already attacked
-   <!-- Lengths: C=118 | D1=97 | D2=102 | D3=124 -->
+   <!-- Lengths: C=102 | D1=97 | D2=102 | D3=124 -->
    <!-- /gmc:answer -->
 
 ---
@@ -126,7 +126,8 @@ The correct answer must be {{LONG_ANSWER_MAX_CHARS}} characters or fewer. Count 
 **STEP 3 — VISUAL BALANCE VERIFICATION (MANDATORY — check every question):**
 After writing all four options, verify:
 - All options share the same justification style (all bare values, or all with matching "because…"/"since…" clauses)
-- No option should be obviously different in length from the others
+- The correct answer should be the shortest or tied for shortest — correct answers should be elegant and concise
+- If distractors are shorter than C, that's fine; if C is noticeably longer than distractors, rewrite C to be more economical
 - Include this verification as a comment after every question:
   `<!-- Lengths: C=XX | D1=XX | D2=XX | D3=XX -->`
 
