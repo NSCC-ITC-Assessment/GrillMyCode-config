@@ -193,12 +193,12 @@ Every question MUST follow this exact anatomy:
 
    <!-- gmc:answer -->
    **Answer:**
-   - <one bullet — the correct answer, as a complete sentence>
+   - <one bullet — the correct answer, as a complete sentence - MANDATORY>
 
    **Distractors for Multiple-Choice Quiz:**
-   - <one bullet — distractor 1>
-   - <one bullet — distractor 2>
-   - <one bullet — distractor 3>
+   - <one bullet — distractor 1 - MANDATORY>
+   - <one bullet — distractor 2 - MANDATORY>
+   - <one bullet — distractor 3 - MANDATORY>
    <!-- /gmc:answer -->
 ````
 
@@ -208,6 +208,7 @@ Violations that will cause output rejection:
 
 - Missing the filename header or the fenced code block for any question
 - **Answer: <text with no leading bullet dash> — the correct answer MUST start with "- " just like the distractors**
+- **MISSING DISTRACTORS — every question MUST have exactly 3 distractors under "Distractors for Multiple-Choice Quiz:" heading**
 - Merging the **Answer:** and **Distractors for Multiple-Choice Quiz:** sections into a single flat list
 - Placing the correct answer directly after the `**Answer:**` heading on the same line without a newline
 - Skipping the blank line between the last correct-answer bullet and the `**Distractors for Multiple-Choice Quiz:**` heading
