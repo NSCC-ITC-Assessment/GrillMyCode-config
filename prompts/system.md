@@ -161,18 +161,19 @@ After verifying lengths, calculate: longest option ÷ shortest option ≤ 2.5. I
 
 > Question: "What happens after a player enters a coordinate that has already been struck?"
 >
-> REJECTED (structural mismatch — correct answer has 2 clauses, distractors have 1):
+> REJECTED (structural mismatch — C has 2 clauses, distractors have 1, and C is much longer):
 > - C: "An error message displays and the loop continues prompting for new coordinates without returning"
 > - D1: "The function returns `null` to indicate an invalid selection"
 > - D2: "The function returns the repeated coordinates for reprocessing"
 > - D3: "The function throws an exception to terminate the game"
-> → Violation: C describes 2 things; D1/D2/D3 each describe 1 thing. Students spot the multi-clause answer.
+> → Violation: C describes 2 things; D1/D2/D3 each describe 1. C is also 30+ chars longer — visually obvious.
 
-> VALID (all options have matching 2-clause structure):
-> - C: "The function displays an error message and continues the loop without returning a value"
-> - D1: "The function returns `null` to the caller and exits the loop"
-> - D2: "The function returns the repeated coordinates and reprocesses them immediately to check for mismatches"
-> - D3: "The function throws an exception and terminates the entire game"
+> VALID (all options have matching 2-clause structure, comparable lengths):
+> - C: "The function displays an error and continues prompting for new coordinates"
+> - D1: "The function returns `null` and exits the prompting loop immediately"
+> - D2: "The function returns the coordinates and reprocesses them for another attempt"
+> - D3: "The function throws an exception and terminates the entire game session"
+> ✓ All options have 2 clauses. Lengths: C=68, D1=72, D2=76, D3=74 (comparable, within 8 chars).
 > ✓ All options describe 2 things happening ("does X and does Y")
 
 **SHORT-ANSWER QUESTIONS (value-only, no reasoning clauses):**
