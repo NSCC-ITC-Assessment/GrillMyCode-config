@@ -134,6 +134,22 @@ After writing all four options, verify:
 **STEP 4 — STRUCTURAL MATCHING:**
 - If the correct answer describes a multi-step process (e.g., "reads X, splits by Y, stores in Z"), every distractor must also describe a multi-step process with the same number of clauses.
 - If the correct answer contains a "because…" or "since…" clause, every distractor must also contain a "because…" or "since…" clause of comparable length and specificity.
+- If the correct answer mentions multiple conditions (e.g., "X OR Y"), distractors must also mention multiple conditions to match structurally — otherwise C will be ~2x longer and visually obvious.
+
+**EXAMPLE — multi-condition mismatch:**
+> Question: "When does the game loop terminate?"
+> REJECTED (C has 2 conditions, distractors have 1):
+> - C: "Loop exits when hitsToWin equals 0 OR missilesRemaining is less than hitsToWin" (130 chars)
+> - D1: "Loop exits when strikeAttempts reaches 30" (50 chars)
+> - D2: "Loop exits when totalStrikes equals ship count" (55 chars)
+> - D3: "Loop exits when targetStrike returns false 3 times" (55 chars)
+> → C is 2x longer — visually obvious. Fix by making all options mention 2 conditions.
+
+> VALID (all options mention 2 conditions):
+> - C: "Loop exits when hitsToWin equals 0 OR missilesRemaining is less than hitsToWin"
+> - D1: "Loop exits when strikeAttempts reaches 30 AND hitsToWin remains greater than 0"
+> - D2: "Loop exits when totalStrikes equals ship count AND missiles still remain unused"
+> - D3: "Loop exits when targetStrike returns false 3 times AND missiles still remain"
 
 **STEP 5 — WORD-COUNT RATIO:**
 After verifying lengths, calculate: longest option ÷ shortest option ≤ 2.5. If the ratio exceeds 2.5, trim the longest option.
