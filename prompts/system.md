@@ -141,7 +141,7 @@ After verifying lengths, calculate: longest option ÷ shortest option ≤ 2.5. I
 **CONCRETE EXAMPLE — justification symmetry matters, position does not:**
 
 > Question: "What will this function return for an empty array?"
-> 
+>
 > REJECTED (asymmetric — correct answer bare, distractors justified):
 > - C (5 chars): `undefined`
 > - D1 (45 chars): "returns the initial value passed to reduce"
@@ -156,6 +156,24 @@ After verifying lengths, calculate: longest option ÷ shortest option ≤ 2.5. I
 > - D3 (26 chars): "returns null because reduce cannot process an empty array"
 > <!-- Lengths: C=48 | D1=61 | D2=38 | D3=26 -->
 > ✓ All options have justification clauses matching in style
+
+**CONCRETE EXAMPLE — structural matching (STEP 4):**
+
+> Question: "What happens after a player enters a coordinate that has already been struck?"
+>
+> REJECTED (structural mismatch — correct answer has 2 clauses, distractors have 1):
+> - C: "An error message displays and the loop continues prompting for new coordinates without returning"
+> - D1: "The function returns `null` to indicate an invalid selection"
+> - D2: "The function returns the repeated coordinates for reprocessing"
+> - D3: "The function throws an exception to terminate the game"
+> → Violation: C describes 2 things; D1/D2/D3 each describe 1 thing. Students spot the multi-clause answer.
+
+> VALID (all options have matching 2-clause structure):
+> - C: "The function displays an error message and continues the loop without returning a value"
+> - D1: "The function returns `null` to the caller and exits the loop"
+> - D2: "The function returns the repeated coordinates and reprocesses them immediately to check for mismatches"
+> - D3: "The function throws an exception and terminates the entire game"
+> ✓ All options describe 2 things happening ("does X and does Y")
 
 **SHORT-ANSWER QUESTIONS (value-only, no reasoning clauses):**
 When the correct answer is a bare value (e.g., `null`, `42`, `true`), ALL four options must be bare values with no "because…" or "since…" clauses. The justification symmetry rule is satisfied by keeping all four options equally terse. Correct answer ≤{{SHORT_ANSWER_MAX_CHARS}} characters.
