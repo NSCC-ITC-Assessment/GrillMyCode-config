@@ -53,12 +53,13 @@ function checkForRepeatedStrike(launchCoordinates, targetsMap) {
    <!-- gmc:answer -->
 
    **Answer:**
-   - checkForTargetStrike checks the locationsMap for `'1'` to detect ships, while checkForRepeatedStrike checks targetsMap for any defined value to detect repeated strikes
+   - `checkForTargetStrike` checks `locationsMap` for `'1'` to detect ships and returns true when found, while `checkForRepeatedStrike` checks `targetsMap` for any defined value to detect repeated strikes
 
    **Distractors for Multiple-Choice Quiz:**
-   - checkForTargetStrike reads locationsMap for a `'0'` to confirm an empty cell, while checkForRepeatedStrike reads targetsMap for undefined to confirm the coordinate has never been launched
-   - checkForTargetStrike compares targetsMap against the string `'hit'` to identify destroyed ships, while checkForRepeatedStrike compares locationsMap against null to detect coordinates that have already been processed
-   - checkForTargetStrike evaluates locationsMap[`targetRow`][`targetColumn`] !== `'hit'` and returns true on a miss, while checkForRepeatedStrike evaluates targetsMap[`targetRow`][`targetColumn`] !== undefined and returns true when the coordinate was already attacked
+   - `checkForTargetStrike` reads `locationsMap` for `'0'` to confirm an empty cell, while `checkForRepeatedStrike` reads `targetsMap` for `undefined` to confirm no prior launch
+   - `checkForTargetStrike` compares `targetsMap` against `'hit'` to identify destroyed ships, while `checkForRepeatedStrike` compares `locationsMap` against `null` to detect processed coordinates
+   - `checkForTargetStrike` evaluates `locationsMap[`targetRow`][`targetColumn`] !== '1'` to return true on a miss, while `checkForRepeatedStrike` evaluates `targetsMap[`targetRow`][`targetColumn`] !== undefined` to return true when already attacked
+   <!-- Lengths: C=118 | D1=97 | D2=102 | D3=124 -->
    <!-- /gmc:answer -->
 
 ---
@@ -114,22 +115,20 @@ LENGTH RULE — MECHANICAL ENFORCEMENT (MANDATORY, REJECTION-LEVEL):
 
 Every option must read like a confident answer a student might give — include specific code elements, mechanisms, or reasoning in ALL four options. No throwaway one-liner distractors next to a detailed correct answer.
 
-**STEP 1 — ELABORATION DIRECTION (write in this order):**
-1. Write the correct answer first. Phrase it as ECONOMICALLY as possible — the fewest words that are still complete and specific. Do NOT lavish explanation on it.
-2. Write THREE distractors, each carrying MORE detail/reasoning than the correct answer. This is intentional and required — the correct answer should be the shortest option, not the longest.
+**STEP 1 — ELABORATION DIRECTION:**
+1. Write the correct answer first. Phrase it as ECONOMICALLY as possible — the fewest words that are still complete and specific.
+2. Write THREE distractors that are verifiably wrong but sound plausible. All options (correct + distractors) must share the same justification style.
 3. Every option must be at least 8 words.
 
 **STEP 2 — CHARACTER CAP (correct answer only):**
 The correct answer must be {{LONG_ANSWER_MAX_CHARS}} characters or fewer. Count characters (including spaces and punctuation) — this is a hard ceiling. If it exceeds {{LONG_ANSWER_MAX_CHARS}}, trim it. Distractors are exempt from this cap and may exceed it freely.
 
 **STEP 3 — VISUAL BALANCE VERIFICATION (MANDATORY — check every question):**
-After writing all four options, count characters for each and sort them shortest-to-longest:
-- Correct answer MUST be position 3 or 4 (i.e., one of the two shortest). If it is position 1 or 2, the question is REJECTED — rewrite.
-- At least TWO distractors must be strictly longer than the correct answer (not merely equal).
-- The longest distractor must exceed the correct answer by at least 20 characters.
-- Include this verification as a REQUIRED comment after every question (not optional):
+After writing all four options, verify:
+- All options share the same justification style (all bare values, or all with matching "because…"/"since…" clauses)
+- No option should be obviously different in length from the others
+- Include this verification as a comment after every question:
   `<!-- Lengths: C=XX | D1=XX | D2=XX | D3=XX -->`
-  Sort them and state position: `<!-- Sorted shortest→longest: C(XX), D?, D?, D? — C is position Y -->` where Y must be 3 or 4.
 
 **STEP 4 — STRUCTURAL MATCHING:**
 - If the correct answer describes a multi-step process (e.g., "reads X, splits by Y, stores in Z"), every distractor must also describe a multi-step process with the same number of clauses.
@@ -138,79 +137,24 @@ After writing all four options, count characters for each and sort them shortest
 **STEP 5 — WORD-COUNT RATIO:**
 After verifying lengths, calculate: longest option ÷ shortest option ≤ 2.5. If the ratio exceeds 2.5, trim the longest option.
 
-**CONCRETE EXAMPLE — correct vs. rejected:**
+**CONCRETE EXAMPLE — justification symmetry matters, position does not:**
 
 > Question: "What will this function return for an empty array?"
-> REJECTED (correct answer is longest):
-> - C (60 chars): "returns undefined because reduce on an empty array with no initial value throws a TypeError"
+> 
+> REJECTED (asymmetric — correct answer bare, distractors justified):
+> - C (5 chars): `undefined`
 > - D1 (45 chars): "returns the initial value passed to reduce"
 > - D2 (38 chars): "returns the first element of the array"
 > - D3 (20 chars): "returns null"
-> → C is longest — REJECTED. Correct answer must be shortest.
+> → Violation: C is bare but distractors have justifications. Students will spot the bare answer.
 
-> FIXED (correct answer is shortest of four):
-> - C (38 chars): "returns undefined on an empty array with no initial value"
-> - D1 (62 chars): "returns the initial value if one was passed as the second argument to reduce"
-> - D2 (55 chars): "returns the first element of the array after applying the callback"
-> - D3 (48 chars): "returns null since reduce cannot process an empty array"
-> <!-- Lengths: C=38 | D1=62 | D2=55 | D3=48 -->
-> <!-- Sorted shortest→longest: C(38), D3(48), D2(55), D1(62) — C is position 1 -->
-> → C is position 1 — still REJECTED (must be 3 or 4).
-
-> CORRECT (correct answer is position 3):
-> - C (42 chars): "returns undefined when no initial value is provided"
-> - D1 (71 chars): "returns the initial value if one was passed as the second argument to the reduce method"
-> - D2 (65 chars): "returns the first array element after applying the callback function to it"
-> - D3 (53 chars): "returns null because an empty array cannot be reduced to a single value"
-> <!-- Lengths: C=42 | D1=71 | D2=65 | D3=53 -->
-> <!-- Sorted shortest→longest: C(42), D3(53), D2(65), D1(71) — C is position 1 -->
-> → Still position 1 — need C to be position 3 or 4. Trim C more or lengthen distractors.
-
-> VALID:
-> - C (35 chars): "returns undefined for an empty array"
-> - D1 (72 chars): "returns the initial value if one was passed as the second argument to the reduce method"
-> - D2 (66 chars): "returns the first array element after applying the callback function to accumulate results"
-> - D3 (54 chars): "returns null because reduce cannot process an empty array without an initial value"
-> <!-- Lengths: C=35 | D1=72 | D2=66 | D3=54 -->
-> <!-- Sorted shortest→longest: C(35), D3(54), D2(66), D1(72) — C is position 1 -->
-> → C is still position 1. Need at least two distractors shorter than it — which means we need to add MORE distractors that are shorter. Wait — there are only 4 options. If C is 1st shortest, we need D1, D2, or D3 to be SHORTER than C. But distractors must be longer. This is impossible.
-
-> **KEY INSIGHT:** The "position 3 or 4" rule means C must NOT be the shortest option. At least one distractor must be shorter than C. In the example above, D3 (54) is longer than C (35), so we need at least two distractors shorter than C to push C to position 3. This means the correct answer should NOT be the absolute shortest — it should be mid-range, with one very short distractor and two longer ones. Aim: C is the 3rd shortest (position 3 of 4).
-
-> VALID:
+> VALID (symmetric — all justified sentences):
 > - C (48 chars): "returns undefined when reduce is called on an empty array with no initial value"
-> - D1 (78 chars): "returns the initial value if one was passed as the second argument to the reduce method on an empty array"
-> - D2 (61 chars): "returns the first element of the array if one exists, otherwise returns the initial value"
-> - D3 (25 chars): "returns null"
-> <!-- Lengths: C=48 | D1=78 | D2=61 | D3=25 -->
-> <!-- Sorted shortest→longest: D3(25), C(48), D2(61), D1(78) — C is position 2 -->
-> → C is position 2 — still not 3 or 4. Need D2 shorter than C or C shorter still.
-
-> VALID (final):
-> - C (40 chars): "returns undefined when no initial value is supplied"
-> - D1 (76 chars): "returns the initial value passed as the second argument to reduce if the array is empty and an initial was provided"
-> - D2 (59 chars): "returns the first element of the array after executing the callback function on it"
-> - D3 (28 chars): "returns null"
-> <!-- Lengths: C=40 | D1=76 | D2=59 | D3=28 -->
-> <!-- Sorted shortest→longest: D3(28), C(40), D2(59), D1(76) — C is position 2 -->
-> → C is position 2. Need C to be position 3. Must have D2 shorter than C too.
-
-> FINAL VALID:
-> - C (44 chars): "returns undefined when reduce processes an empty array without an initial value"
-> - D1 (74 chars): "returns the initial value if one was passed as the second argument to the reduce method"
+> - D1 (61 chars): "returns the first element of the array if one exists, otherwise returns the initial value"
 > - D2 (38 chars): "returns the first element of the array if it is non-empty"
-> - D3 (26 chars): "returns null"
-> <!-- Lengths: C=44 | D1=74 | D2=38 | D3=26 -->
-> <!-- Sorted shortest→longest: D3(26), D2(38), C(44), D1(74) — C is position 3 ✓ -->
-> → C is position 3. Two distractors (D3, D2) are shorter than C. D1 is 30 chars longer than C (>20 ✓). Ratio 74÷26=2.85 — slightly high, trim D1 slightly.
-
-> CORRECTED FINAL:
-> - C (44 chars): "returns undefined when reduce processes an empty array without an initial value"
-> - D1 (65 chars): "returns the initial value passed as the second argument to reduce when provided by the caller"
-> - D2 (38 chars): "returns the first element of the array if it is non-empty"
-> - D3 (26 chars): "returns null"
-> <!-- Lengths: C=44 | D1=65 | D2=38 | D3=26 -->
-> <!-- Sorted shortest→longest: D3(26), D2(38), C(44), D1(65) — C is position 3 ✓ | D1 is 21 chars longer than C ✓ | Ratio 65÷26=2.5 ✓ -->
+> - D3 (26 chars): "returns null because reduce cannot process an empty array"
+> <!-- Lengths: C=48 | D1=61 | D2=38 | D3=26 -->
+> ✓ All options have justification clauses matching in style
 
 **SHORT-ANSWER QUESTIONS (value-only, no reasoning clauses):**
 When the correct answer is a bare value (e.g., `null`, `42`, `true`), ALL four options must be bare values with no "because…" or "since…" clauses. The justification symmetry rule is satisfied by keeping all four options equally terse. Correct answer ≤{{SHORT_ANSWER_MAX_CHARS}} characters.
