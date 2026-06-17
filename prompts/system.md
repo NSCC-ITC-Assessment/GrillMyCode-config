@@ -126,6 +126,29 @@ Every option must read like a confident answer a student might give — include 
 - If C is noticeably shorter, add detail to C OR remove detail from distractors
 - DO NOT proceed to Step 2 until all four options look balanced
 
+**CONCRETE EXAMPLE — how to write balanced answers (study this structure):**
+
+> Question: "When does the game loop in `playGame` terminate?"
+>
+> ✓ **GOOD (short C, some longer distractors — structurally matched):**
+> - C: "When all defined targets are hit OR missiles run out" (52 chars, 2 clauses)
+> - D1: "When the player quits OR all missiles are fired" (47 chars, 2 clauses)
+> - D2: "When 30 missiles have been fired OR the player surrenders" (64 chars, 2 clauses)
+> - D3: "When all ships are sunk OR the player runs out of ammunition" (76 chars, 2 clauses)
+> <!-- Lengths: C=52 | D1=47 | D2=64 | D3=76 -->
+> ✓ All options have 2 clauses (matching structure)
+> ✓ C is shortest (preferred)
+> ✓ No option is 2x longer than another (ratio = 76/54 = 1.4, well under 2.5)
+>
+> ✗ **BAD (what you keep generating — DON'T DO THIS):**
+> - C: "When all targets are hit or missiles remaining are less than hits needed" (74 chars, 2 clauses)
+> - D1: "When the player chooses to quit" (38 chars, 1 clause)
+> - D2: "When 30 missiles have been fired" (40 chars, 1 clause)
+> - D3: "When the player sinks all ships" (40 chars, 1 clause)
+> <!-- Lengths: C=74 | D1=38 | D2=40 | D3=40 -->
+> ✗ VIOLATION: C has 2 clauses, distractors have 1 — structural mismatch
+> ✗ VIOLATION: C is nearly 2x longer than distractors — visually obvious
+
 **STEP 2 — CHARACTER CAP (correct answer only):**
 The correct answer must be 120 characters or fewer. Count characters (including spaces and punctuation) — this is a hard ceiling. If it exceeds 120, trim it. Distractors are exempt from this cap and may exceed it freely.
 
