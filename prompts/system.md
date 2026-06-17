@@ -207,7 +207,7 @@ ANSWER CONTAINER (MANDATORY): Wrap each question's answer section in a single pa
 Violations that will cause output rejection:
 
 - Missing the filename header or the fenced code block for any question
-- Writing `**Answer:** &lt;plain text with no bullet&gt;` — the correct answer MUST be a bullet, not bare inline text
+- **Answer: <text with no leading bullet dash> — the correct answer MUST start with "- " just like the distractors**
 - Merging the **Answer:** and **Distractors for Multiple-Choice Quiz:** sections into a single flat list
 - Placing the correct answer directly after the `**Answer:**` heading on the same line without a newline
 - Skipping the blank line between the last correct-answer bullet and the `**Distractors for Multiple-Choice Quiz:**` heading
