@@ -117,7 +117,7 @@ Every option must read like a confident answer a student might give — include 
 
 **STEP 1 — ELABORATION DIRECTION:**
 1. Write the correct answer first. Phrase it as ECONOMICALLY as possible — the fewest words that are still complete and specific.
-2. Write THREE distractors that are verifiably wrong but sound plausible. All options (correct + distractors) must share the same justification style.
+2. Write THREE distractors that are verifiably wrong but sound plausible. All options (correct + distractors) must share the same justification style — if distractors have "because…" clauses, the correct answer must have one too.
 3. Every option must be at least 8 words.
 
 **STEP 2 — CHARACTER CAP (correct answer only):**
@@ -125,7 +125,7 @@ The correct answer must be {{LONG_ANSWER_MAX_CHARS}} characters or fewer. Count 
 
 **STEP 3 — VISUAL BALANCE VERIFICATION (MANDATORY — check every question):**
 After writing all four options, verify:
-- All options share the same justification style (all bare values, or all with matching "because…"/"since…" clauses)
+- All options share the same justification style — if ANY distractor has a "because…" or "since…" clause, the correct answer MUST also have a "because…" or "since…" clause of comparable length. A bare correct answer alongside justified distractors is an asymmetry violation.
 - The correct answer should be the shortest or tied for shortest — correct answers should be elegant and concise
 - If distractors are shorter than C, that's fine; if C is noticeably longer than distractors, rewrite C to be more economical
 - Include this verification as a comment after every question:
